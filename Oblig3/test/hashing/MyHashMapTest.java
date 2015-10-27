@@ -14,6 +14,7 @@ public class MyHashMapTest {
 	    map.put("Cook", 29);
 	    map.put("Smith", 430);
 	}
+	
 	@Test
 	public void getAllLookupSmithShouldReturnTwoOccurences() {
 		java.util.Set<Integer> shouldBe = new java.util.HashSet<>();
@@ -23,5 +24,14 @@ public class MyHashMapTest {
 		assertThat(actualResult,equalTo(shouldBe));
 	}
 	
-	// ikke ferdig...
+	@Test
+	public void getAll_afterRemove_LookupSmithShouldReturnLastOccurence() {
+		java.util.Set<Integer> shouldBe = new java.util.HashSet<>();
+		shouldBe.add(430);
+		map.remove("Smith");
+		java.util.Set<Integer> actualResult = map.getAll("Smith");
+		assertThat(actualResult,equalTo(shouldBe));
+	}
+	
+	
 }
