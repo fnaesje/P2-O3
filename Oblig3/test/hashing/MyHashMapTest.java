@@ -16,7 +16,7 @@ public class MyHashMapTest {
 	}
 	
 	@Test
-	public void getAllLookupSmithShouldReturnTwoOccurences() {
+	public void getAll_LookupSmith_ShouldReturnTwoOccurences() {
 		java.util.Set<Integer> shouldBe = new java.util.HashSet<>();
 		shouldBe.add(30);
 		shouldBe.add(430);
@@ -32,6 +32,15 @@ public class MyHashMapTest {
 		java.util.Set<Integer> actualResult = map.getAll("Smith");
 		assertThat(actualResult,equalTo(shouldBe));
 	}
+	
+	@Test
+	public void getAll_afterRemoveBothSmiths_LookupSmithShouldReturnEmptySet() {
+		map.remove("Smith");
+		map.remove("Smith");
+		java.util.Set<Integer> actualResult = map.getAll("Smith");
+		assertThat(actualResult.isEmpty(), is(true));
+	}
+	
 	
 	
 }
